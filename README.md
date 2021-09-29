@@ -1,4 +1,4 @@
-## Libro  
+## Libro   :closed_book: :green_book: :blue_book: 
 Prisma mentoreado  
 version jdk 8  
 IDE NetBeans 8.2  
