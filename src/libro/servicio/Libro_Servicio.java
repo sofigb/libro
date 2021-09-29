@@ -21,36 +21,24 @@ public class Libro_Servicio {
         mapLibro = new HashMap();
     }
 
-    public void crearLibro(String titulo, String autor, Integer numPaginas) throws Exception {
+    public void agregarLibro(String titulo, String autor, Integer numPaginas) throws Exception {
         try {
-
             libro = new Libro(titulo, autor, numPaginas);
+            if (duplicidadIsbn(libro.getIsbn())) {
+                throw new Exception("El ISBN " + libro.getIsbn() + " ya existe en la lista de libros.");
+            } else {
 
+                mapLibro.put(libro.getIsbn(), libro);
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-        agregarLibros(libro);
     }
 
     public Boolean duplicidadIsbn(String isbn) throws Exception {
 
         return (mapLibro.containsKey(isbn));
 
-    }
-
-    public void agregarLibros(Libro libro) throws Exception {
-        try {
-            if (duplicidadIsbn(libro.getIsbn())) {
-                throw new Exception("El ISBN " + libro.getIsbn() + " ya existe en la lista de libros.");
-
-            } else {
-                mapLibro.put(libro.getIsbn(), libro);
-
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     public void mostrarLibros() {
