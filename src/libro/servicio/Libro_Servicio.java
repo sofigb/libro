@@ -7,6 +7,7 @@ Por último, indicar cuál de los 2 tiene más páginas.
  */
 package libro.servicio;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Optional;
 import libro.Libro;
@@ -17,7 +18,6 @@ public class Libro_Servicio {
     HashMap<String, Libro> mapLibro;
 
     public Libro_Servicio() {
-
         mapLibro = new HashMap();
     }
 
@@ -27,7 +27,6 @@ public class Libro_Servicio {
             if (duplicidadIsbn(libro.getIsbn())) {
                 throw new Exception("El ISBN " + libro.getIsbn() + " ya existe en la lista de libros.");
             } else {
-
                 mapLibro.put(libro.getIsbn(), libro);
             }
         } catch (Exception e) {
@@ -36,47 +35,79 @@ public class Libro_Servicio {
     }
 
     public Boolean duplicidadIsbn(String isbn) throws Exception {
-
         return (mapLibro.containsKey(isbn));
-
     }
 
     public void mostrarLibros() {
         System.out.println("");
         System.out.println("--------------Lista de libros (sin ordenar)--------------------");
-        mapLibro.forEach((key, value) -> System.out.println(value));
-        System.out.print("\n");
+        mapLibro.values()
+                .stream()
+                .filter(l -> l.isHabilitado())
+                .forEach(System.out::println);
+        System.out.println("---------------------------------------------------------------");
     }
 
     public void mostrarListaOrdenada() {
-        System.out.println("--------------Lista de libros ordenada por precio--------------------");
-        mapLibro.values().stream()
-                .sorted(Libro.compararCantidadPaginasAsc)
-                .forEach((value) -> System.out.println(value));
-        System.out.print("\n");
+        System.out.println("--------------Lista de libros ordenada por numero de páginas--------------");
+
+        mapLibro.values()
+                .stream()
+                .filter(l -> l.isHabilitado())
+                .sorted(Comparator
+                        .comparing(Libro::getNumPaginas)
+                        .thenComparing(Libro::getTitulo)
+                        .reversed())
+                .forEach(System.out::println);
+        System.out.println("---------------------------------------------------------------");
     }
 
     public void libroConMasPaginas() {
-        System.out.println("--------------Libro con mayor precio--------------------");
-        Optional<Libro> optional = mapLibro.values().stream().max(Libro.compararCantidadPaginasDesc);
+        System.out.println("------------------Libro con mayor numero de páginas----------------------");
+        Optional<Libro> optional = mapLibro
+                .values()
+                .stream()
+                .max(Comparator
+                        .comparing(Libro::getNumPaginas));
         Libro libroMasPaginas = optional.get();
         System.out.println(libroMasPaginas);
         System.out.print("\n");
+        System.out.println("---------------------------------------------------------------");
     }
 
+    public void borrarLibro(String isbn) throws Exception {
+        try{
+            if (!mapLibro.containsKey(isbn)) {
+                throw new Exception("no se encontró isbn");
+            }
+            if(!mapLibro.get(isbn).isHabilitado()){
+                throw new Exception("Error: Este libro ya se encuentra borrado");
+            }
+            Libro lb = mapLibro.get(isbn);
+            lb.setHabilitado(false);
+            mapLibro.put(isbn, lb);
+            System.out.println(lb);
+            System.out.println("Ha sido dado de baja");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void habilitarLibro(String isbn) throws Exception {
+        try {
+            if (!mapLibro.containsKey(isbn)) {
+                throw new Exception("no se encontró isbn");
+            }
+            if(mapLibro.get(isbn).isHabilitado()){
+                throw new Exception("Error: Este libro ya esta habilitado");
+            }
+            Libro lb = mapLibro.get(isbn);
+            lb.setHabilitado(true);
+            mapLibro.put(isbn, lb);
+            System.out.println(lb);
+            System.out.println("Ha sido dado de alta");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
-
-/*public void mostrarLibros() {
-        mapLibro.forEach((key, value) -> System.out.println(value));
-    }
-
-    public void libroConMasPaginas() {
-        System.out.println("\"--------LISTA ORDENADA DE LIBROS--------\"");
-        mapLibro.values().stream()
-                .sorted(Libro.compararCantidadPaginasAsc)
-                .forEach((value) -> System.out.println(value));
-
-        System.out.println("\"--------LIBRO MAX CANTIDAD PAGINAS--------\"");
-        System.out.println(mapLibro.values().stream().max(Libro.compararCantidadPaginasDesc).get()); // .get te imprime el objeto, sin el formato optional
-
-    }*/
