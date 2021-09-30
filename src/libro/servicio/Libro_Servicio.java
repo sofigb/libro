@@ -111,4 +111,23 @@ public class Libro_Servicio {
             System.out.println(e.getMessage());
         }
     }
+
+    public void buscarLibroPorIsbn(String isbn) {
+        try {
+
+            if (mapLibro.containsKey(isbn) && mapLibro.get(isbn).isHabilitado()) {
+                System.out.println("");
+                System.out.println("--------------Libro por ISBN--------------------");
+                System.out.println(mapLibro.get(isbn));
+                System.out.println("---------------------------------------------------------------");
+            } else {
+                System.out.println("El isbn ingresado no existe");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+
+    }
 }
