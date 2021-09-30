@@ -18,6 +18,7 @@ public class Libro {
     private String titulo;
     private String autor;
     private Integer numPaginas;
+    private boolean habilitado;
 
     public Libro() {
     }
@@ -31,6 +32,7 @@ public class Libro {
         this.titulo = titulo;
         this.autor = autor;
         this.numPaginas = numPaginas;
+        this.habilitado=true;
     }
 
     public String getIsbn() {
@@ -93,5 +95,13 @@ public class Libro {
         return (UUID.randomUUID().toString()
                 .replaceAll("[^0-9]", "")
                 .substring(0, 10));
+    }
+    
+        public boolean isHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean estado) {
+        this.habilitado = estado;
     }
 }
