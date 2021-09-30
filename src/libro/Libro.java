@@ -22,7 +22,9 @@ public class Libro {
     private Integer numPaginas;
     private boolean habilitado;
     private GeneroClass genClass;
+    
     public Libro() {
+        
     }
 
     public Libro(String titulo, String autor, Integer numPaginas,GeneroClass genClass) {
