@@ -9,30 +9,33 @@ Por último, indicar cuál de los 2 tiene más páginas.
  */
 package libro;
 
+import genero.GeneroClass;
 import java.util.Comparator;
 import java.util.UUID;
 
 public class Libro {
 
+   
     private String isbn;
     private String titulo;
     private String autor;
     private Integer numPaginas;
     private boolean habilitado;
-
+    private GeneroClass genClass;
     public Libro() {
     }
 
-    public Libro(String titulo, String autor, Integer numPaginas) {
-        this(crearIsbn(), titulo, autor, numPaginas);
+    public Libro(String titulo, String autor, Integer numPaginas,GeneroClass genClass) {
+        this(crearIsbn(), titulo, autor, numPaginas,genClass);
     }
 
-    public Libro(String isbn, String titulo, String autor, Integer numPaginas) {
+    public Libro(String isbn, String titulo, String autor, Integer numPaginas,GeneroClass genClass) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
         this.numPaginas = numPaginas;
         this.habilitado=true;
+        this.genClass=genClass;
     }
 
     public String getIsbn() {
@@ -71,7 +74,7 @@ public class Libro {
     @Override
     public String toString() {
         return "El libro " + titulo + " con ISBN " + isbn + " creado por " + autor
-                + " tiene " + numPaginas + " páginas.";
+                + " tiene " + numPaginas + " páginas."+" Genero "+ genClass.getGenEnum()+" Subgenero "+genClass.getSubEnum();
     }
 
     public static Comparator<Libro> compararCantidadPaginasDesc = new Comparator<Libro>() {
@@ -104,4 +107,13 @@ public class Libro {
     public void setHabilitado(boolean estado) {
         this.habilitado = estado;
     }
+
+    public GeneroClass getGenClass() {
+        return genClass;
+    }
+
+    public void setGenClass(GeneroClass genClass) {
+        this.genClass = genClass;
+    }
+    
 }

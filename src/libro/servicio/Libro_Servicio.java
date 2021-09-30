@@ -7,6 +7,7 @@ Por último, indicar cuál de los 2 tiene más páginas.
  */
 package libro.servicio;
 
+import genero.GeneroClass;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Optional;
@@ -21,9 +22,9 @@ public class Libro_Servicio {
         mapLibro = new HashMap();
     }
 
-    public void agregarLibro(String titulo, String autor, Integer numPaginas) throws Exception {
+    public void agregarLibro(String titulo, String autor, Integer numPaginas, GeneroClass genClass) throws Exception {
         try {
-            libro = new Libro(titulo, autor, numPaginas);
+            libro = new Libro(titulo, autor, numPaginas, genClass);
             if (duplicidadIsbn(libro.getIsbn())) {
                 throw new Exception("El ISBN " + libro.getIsbn() + " ya existe en la lista de libros.");
             } else {
@@ -76,11 +77,11 @@ public class Libro_Servicio {
     }
 
     public void borrarLibro(String isbn) throws Exception {
-        try{
+        try {
             if (!mapLibro.containsKey(isbn)) {
                 throw new Exception("no se encontró isbn");
             }
-            if(!mapLibro.get(isbn).isHabilitado()){
+            if (!mapLibro.get(isbn).isHabilitado()) {
                 throw new Exception("Error: Este libro ya se encuentra borrado");
             }
             Libro lb = mapLibro.get(isbn);
@@ -88,17 +89,17 @@ public class Libro_Servicio {
             mapLibro.put(isbn, lb);
             System.out.println(lb);
             System.out.println("Ha sido dado de baja");
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public void habilitarLibro(String isbn) throws Exception {
         try {
             if (!mapLibro.containsKey(isbn)) {
                 throw new Exception("no se encontró isbn");
             }
-            if(mapLibro.get(isbn).isHabilitado()){
+            if (mapLibro.get(isbn).isHabilitado()) {
                 throw new Exception("Error: Este libro ya esta habilitado");
             }
             Libro lb = mapLibro.get(isbn);
