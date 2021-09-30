@@ -86,7 +86,7 @@ public class Libro_Servicio {
             }
             Libro lb = mapLibro.get(isbn);
             lb.setHabilitado(false);
-            mapLibro.put(isbn, lb);
+          //  mapLibro.put(isbn, lb);
             System.out.println(lb);
             System.out.println("Ha sido dado de baja");
         } catch (Exception e) {
