@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genero;
+package gender;
 
 /**
  *
  * @author Mirna
  */
-public enum SubGeneroEnum {
+public enum SubGenderEnum {
     EGOGLA,ELEGIA,HIMNO,ODA,SATIRA,EPIGRAMA,MADRIGAL,NOVELA,CUENTO,NOVELA_CORTA,LEYENDA,EPOPEYA,POEMA_EPICO,
     TRAGEDIA,DRAMA,COMEDIA,AUTO_sACRAMENTAL,SAINETTE,PASO,ENTREMES,ENSAYO,FABULA,EPISTOLA,DIALOGO;
     
