@@ -30,13 +30,13 @@ public class Libro_Principal {
 
         System.out.println("---------------------------------------");
         System.out.println("Ingrese ISBN del libro que desea borrar");
-        libroS.borrarLibro(scanner.nextLine());
+        libroS.deshabilitarLibro(scanner.nextLine());
         libroS.mostrarListaOrdenada();
         System.out.println("---------------------------------------");
 
         System.out.println("---------------------------------------");
         System.out.println("Ingrese ISBN del libro que desea borrar");
-        libroS.borrarLibro(scanner.nextLine());
+        libroS.deshabilitarLibro(scanner.nextLine());
         libroS.mostrarListaOrdenada();
         System.out.println("---------------------------------------");
 

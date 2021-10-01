@@ -76,7 +76,7 @@ public class Libro_Servicio {
         System.out.println("---------------------------------------------------------------");
     }
 
-    public void borrarLibro(String isbn) throws Exception {
+    public void deshabilitarLibro(String isbn) throws Exception {
         try {
             if (!mapLibro.containsKey(isbn)) {
                 throw new Exception("no se encontró isbn");
@@ -86,7 +86,10 @@ public class Libro_Servicio {
             }
             Libro lb = mapLibro.get(isbn);
             lb.setHabilitado(false);
-          //  mapLibro.put(isbn, lb);
+
+            //mapLibro.put(isbn, lb);
+
+
             System.out.println(lb);
             System.out.println("Ha sido dado de baja");
         } catch (Exception e) {
@@ -104,7 +107,7 @@ public class Libro_Servicio {
             }
             Libro lb = mapLibro.get(isbn);
             lb.setHabilitado(true);
-            mapLibro.put(isbn, lb);
+            //mapLibro.put(isbn, lb);
             System.out.println(lb);
             System.out.println("Ha sido dado de alta");
         } catch (Exception e) {
