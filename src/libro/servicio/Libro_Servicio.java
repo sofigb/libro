@@ -89,6 +89,7 @@ public class Libro_Servicio {
 
             //mapLibro.put(isbn, lb);
 
+
             System.out.println(lb);
             System.out.println("Ha sido dado de baja");
         } catch (Exception e) {
