@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genero;
+package gender;
 
 /**
  *
  * @author Mirna
  */
-public enum GeneroEnum {
+public enum GenEnum {
     LIRICO,NARRATIVO,EPICO,DRAMATICO,DIDACTICO;
 }
