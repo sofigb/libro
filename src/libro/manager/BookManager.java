@@ -1,7 +1,8 @@
 package libro.manager;
 
 import book.Book;
-import gender.GenClass;
+import LibroEnum.Criterio;
+import LibroEnum.GenClass;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Optional;
@@ -52,18 +53,118 @@ public class BookManager {
         System.out.println("---------------------------------------------------------------");
     }
 
-    public void showBooksSorted() {
+    public void orderByPages(Criterio criterio) {
         System.out.println("--------------Lista de libros ordenada por numero de páginas--------------");
+        //criterio.metodo();
+        switch (criterio) {
+            case ASCENDENTE: {
+                mapBook.values()
+                        .stream()
+                        .filter(l -> l.isEnable())
+                        .sorted(Comparator
+                                .comparing(Book::getNumPaginas)
+                                .thenComparing(Book::getTitulo)
+                                .reversed())
+                        .forEach(System.out::println);
+                System.out.println("---------------------------------------------------------------");
+                break;
+            }
+            case DESCENDENTE: {
+                mapBook.values()
+                        .stream()
+                        .filter(l -> l.isEnable())
+                        .sorted(Comparator
+                                .comparing(Book::getNumPaginas)
+                                .thenComparing(Book::getTitulo))
+                        .forEach(System.out::println);
+                System.out.println("---------------------------------------------------------------");
+                break;
+            }
 
-        mapBook.values()
-                .stream()
-                .filter(l -> l.isEnable())
-                .sorted(Comparator
-                        .comparing(Book::getNumPaginas)
-                        .thenComparing(Book::getTitulo)
-                        .reversed())
-                .forEach(System.out::println);
-        System.out.println("---------------------------------------------------------------");
+        }
+    }
+
+    public void orderByTittle(Criterio criterio) {
+        System.out.println("--------------Lista de libros ordenada por Titulo--------------");
+
+        switch (criterio) {
+            case ASCENDENTE: {
+                mapBook.values()
+                        .stream()
+                        .filter(l -> l.isEnable())
+                        .sorted(Comparator
+                                .comparing(Book::getTitulo)
+                                .reversed())
+                        .forEach(System.out::println);
+                System.out.println("---------------------------------------------------------------");
+                break;
+            }
+            case DESCENDENTE: {
+                mapBook.values()
+                        .stream()
+                        .filter(l -> l.isEnable())
+                        .sorted(Comparator
+                                .comparing(Book::getTitulo))
+                        .forEach(System.out::println);
+                System.out.println("---------------------------------------------------------------");
+                break;
+            }
+        }
+    }
+
+    public void orderByISBN(Criterio criterio) {
+        System.out.println("--------------Lista de libros ordenada por ISBN--------------");
+
+        switch (criterio) {
+            case ASCENDENTE: {
+                mapBook.values()
+                        .stream()
+                        .filter(l -> l.isEnable())
+                        .sorted(Comparator
+                                .comparing(Book::getIsbn)
+                                .reversed())
+                        .forEach(System.out::println);
+                System.out.println("---------------------------------------------------------------");
+                break;
+            }
+            case DESCENDENTE: {
+                mapBook.values()
+                        .stream()
+                        .filter(l -> l.isEnable())
+                        .sorted(Comparator
+                                .comparing(Book::getIsbn))
+                        .forEach(System.out::println);
+                System.out.println("---------------------------------------------------------------");
+                break;
+            }
+        }
+    }
+    public void orderByAuthor(Criterio criterio) {
+        System.out.println("--------------Lista de libros ordenada por Autor--------------");
+
+        switch (criterio) {
+            case ASCENDENTE: {
+                mapBook.values()
+                        .stream()
+                        .filter(l -> l.isEnable())
+                        .sorted(Comparator
+                                .comparing(Book::getAutor)
+                                .reversed())
+                        .forEach(System.out::println);
+                System.out.println("---------------------------------------------------------------");
+                break;
+            }
+            case DESCENDENTE: {
+                mapBook.values()
+                        .stream()
+                        .filter(l -> l.isEnable())
+                        .sorted(Comparator
+                                .comparing(Book::getAutor))
+                        .forEach(System.out::println);
+                System.out.println("---------------------------------------------------------------");
+                break;
+            }
+        }
     }
 
     public void bookMayorPages() {
