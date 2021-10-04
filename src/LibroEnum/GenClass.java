@@ -1,4 +1,4 @@
-package gender;
+package LibroEnum;
 
 public class GenClass {
 private GenEnum genEnum;

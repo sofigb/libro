@@ -1,8 +1,10 @@
 package book.principal;
 
-import gender.GenClass;
-import gender.GenEnum;
-import gender.SubGenderEnum;
+import LibroEnum.Criterio;
+import LibroEnum.GenClass;
+import LibroEnum.GenEnum;
+import LibroEnum.SubGenderEnum;
+
 import java.util.Scanner;
 import libro.manager.BookManager;
 
@@ -19,26 +21,26 @@ public class BookPrincipal {
         bookManager.addBook("Dagon II", "Lovecraft", 500, new GenClass(GenEnum.NARRATIVO, SubGenderEnum.CUENTO));
         bookManager.addBook("Rayuela", "Julio Cortazar", 360, new GenClass(GenEnum.DRAMATICO, SubGenderEnum.DRAMA));
 
-        bookManager.showBooks();
-        bookManager.showBooksSorted();
+        /*bookManager.showBooks();
+        bookManager.orderByPages(Criterio.ASCENDENTE);
         bookManager.bookMayorPages();
 
         System.out.println("---------------------------------------");
         System.out.println("Ingrese ISBN del libro que desea borrar");
         bookManager.unnableBook(scanner.nextLine());
-        bookManager.showBooksSorted();
+        bookManager.orderByPages(Criterio.DESCENDENTE);
         System.out.println("---------------------------------------");
 
         System.out.println("---------------------------------------");
         System.out.println("Ingrese ISBN del libro que desea borrar");
         bookManager.unnableBook(scanner.nextLine());
-        bookManager.showBooksSorted();
+        bookManager.orderByPages(Criterio.ASCENDENTE);
         System.out.println("---------------------------------------");
 
         System.out.println("---------------------------------------");
         System.out.println("Ingrese ISBN del libro que desea habilitar");
         bookManager.enableBook(scanner.nextLine());
-        bookManager.showBooksSorted();
+        bookManager.orderByPages(Criterio.ASCENDENTE);
         System.out.println("---------------------------------------");
 
         System.out.println("---------------------------------------");
@@ -46,6 +48,20 @@ public class BookPrincipal {
 
         bookManager.findBookISBN(scanner.nextLine());
         System.out.println("---------------------------------------");
-
+        */
+        System.out.println("Ordenado por ISBN");
+        bookManager.orderByISBN(Criterio.ASCENDENTE);
+        bookManager.orderByISBN(Criterio.DESCENDENTE);
+        System.out.println("---------------------------------------");
+        
+        System.out.println("Ordenado por titulo");
+        bookManager.orderByTittle(Criterio.ASCENDENTE);
+        bookManager.orderByTittle(Criterio.DESCENDENTE);
+        System.out.println("---------------------------------------");
+        
+        System.out.println("Ordenado por paginas");
+        bookManager.orderByPages(Criterio.ASCENDENTE);
+        bookManager.orderByPages(Criterio.DESCENDENTE);
+        System.out.println("---------------------------------------");
     }
 }

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gender;
+package LibroEnum;
 
 /**
  *
- * @author Mirna
+ * @author Lucho
  */
-public enum GenEnum {
-    LIRICO,NARRATIVO,EPICO,DRAMATICO,DIDACTICO;
+public enum Criterio {
+    ASCENDENTE,DESCENDENTE;
 }

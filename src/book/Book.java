@@ -1,6 +1,6 @@
 package book;
 
-import gender.GenClass;
+import LibroEnum.GenClass;
 import java.util.UUID;
 
 public class Book {
