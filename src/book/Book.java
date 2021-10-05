@@ -54,7 +54,7 @@ public class Book {
         this.author = author;
     }
 
-    public Integer pages() {
+    public Integer getPages() {
         return pages;
     }
 
@@ -82,9 +82,14 @@ public class Book {
         this.enable = estado;
     }
 
-    public GenClass getGenClass() {
-        return genClass;
+    public String getGender() {
+        return genClass.getGenEnum();
     }
+    public String getSubGender() {
+        return genClass.getSubEnum();
+    }
+    
+    
 
     public void setGenClass(GenClass genClass) {
         this.genClass = genClass;

@@ -9,7 +9,7 @@ package LibroEnum;
  *
  * @author Lucho
  */
-public enum Criterio {
-    AUTOR, ISBN, TITLE, PAGES, ENABLE, GENDRE;
+public enum Criterion {
+    AUTOR, ISBN, TITLE, PAGES, ENABLE, GENDER;
 
 }

@@ -1,6 +1,6 @@
 package book.principal;
 
-import LibroEnum.Criterio;
+import LibroEnum.Criterion;
 import LibroEnum.GenClass;
 import LibroEnum.GenEnum;
 import LibroEnum.OrdenEnum;
@@ -50,14 +50,14 @@ public class BookPrincipal {
         bookManager.findBookISBN(scanner.nextLine());
         System.out.println("---------------------------------------");
          */
-        System.out.println("Ordenado por AUTOR");
-        bookManager.sorted(Criterio.AUTOR, OrdenEnum.ASCENDENTE);
-        bookManager.sorted(Criterio.AUTOR, OrdenEnum.DESCENDENTE);
-        System.out.println("---------------------------------------");
+//        System.out.println("Ordenado por AUTOR");
+//        bookManager.sorted(Criterion.AUTOR, OrdenEnum.ASCENDENTE);
+//        bookManager.sorted(Criterion.AUTOR, OrdenEnum.DESCENDENTE);
+//        System.out.println("---------------------------------------");
 
-        System.out.println("Ordenado por ISBN");
-        bookManager.sorted(Criterio.ISBN, OrdenEnum.ASCENDENTE);
-        bookManager.sorted(Criterio.ISBN, OrdenEnum.DESCENDENTE);
+        System.out.println("Ordenado por GENDER");
+        bookManager.sorted(Criterion.GENDER, OrdenEnum.ASCENDENTE);
+        bookManager.sorted(Criterion.GENDER, OrdenEnum.DESCENDENTE);
         System.out.println("---------------------------------------");
 
     }
