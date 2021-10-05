@@ -12,21 +12,21 @@ private SubGenderEnum subEnum;
         this.subEnum = subEnum;
     }
 
-    public GenEnum getGenEnum() {
-        return genEnum;
+    public String getGenEnum() {
+        return genEnum.toString();
     }
 
     public void setGenEnum(GenEnum genEnum) {
         this.genEnum = genEnum;
     }
 
-    public SubGenderEnum getSubEnum() {
-        return subEnum;
+    public String getSubEnum() {
+        return subEnum.toString();
     }
 
     public void setSubEnum(SubGenderEnum subEnum) {
         this.subEnum = subEnum;
     }
-
+    
 
 }

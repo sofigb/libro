@@ -1,14 +1,12 @@
 package libro.manager;
 
 import book.Book;
-import LibroEnum.Criterio;
+import LibroEnum.Criterion;
 import LibroEnum.GenClass;
 import LibroEnum.OrdenEnum;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class BookManager {
@@ -57,10 +55,10 @@ public class BookManager {
         System.out.println("---------------------------------------------------------------");
     }
 
-    public void sorted(Criterio criterio, OrdenEnum orden) {
-        System.out.println("--------------Lista de libros ordenada por " + criterio + " --------------");
+    public void sorted(Criterion criterion, OrdenEnum orden) {
+        System.out.println("--------------Lista de libros ordenada por " + criterion + " --------------");
         Comparator comparator = null;
-        switch (criterio) {
+        switch (criterion) {
             case AUTOR: {
                 comparator = Comparator.comparing(Book::getAuthor);
                 break;
@@ -70,21 +68,22 @@ public class BookManager {
                 break;
             }
             case TITLE: {
+                comparator = Comparator.comparing(Book::getIsbn);
                 break;
             }
             case PAGES: {
-                comparator = Comparator.comparing(Book::pages);
+                comparator = Comparator.comparing(Book::getPages);
                 break;
             }
 
-            /*case GENDRE: {
-                Comparator comparator = Comparator.comparing(Book::getGenClass);
+          case GENDER: {
+                 comparator = Comparator.comparing(Book::getGender);
                 break;
-            }/*/
+            }
 
         }
         if (orden.equals(orden.ASCENDENTE)) {
-           listBookEnable().sorted(comparator).forEach(System.out::println);
+          listBookEnable().sorted(comparator).forEach(System.out::println);
 
         } else {
           listBookEnable().sorted(comparator.reversed()).forEach(System.out::println);
@@ -94,11 +93,12 @@ public class BookManager {
 
     public void bookMayorPages() {
         System.out.println("------------------Libro con mayor numero de páginas----------------------");
+   
         Optional<Book> optional = mapBook
                 .values()
                 .stream()
                 .max(Comparator
-                        .comparing(Book::pages));
+                        .comparing(Book::getPages));
         Book bookMP = optional.get();
         System.out.println(bookMP);
         System.out.print("\n");
@@ -121,10 +121,7 @@ public class BookManager {
             System.out.println(e.getMessage());
         }
     }
-//    public List <Book> listBookEnable(){
-//              
-//        return(this.mapBook.values().stream().filter(l -> l.isEnable()).collect(Collectors.toList()));
-//    }
+
      public Stream<Book> listBookEnable(){
               
         return(mapBook.values().stream().filter(l -> l.isEnable()));
