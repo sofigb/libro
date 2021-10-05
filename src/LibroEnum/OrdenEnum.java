@@ -7,9 +7,8 @@ package LibroEnum;
 
 /**
  *
- * @author Lucho
+ * @author Admin
  */
-public enum Criterio {
-    AUTOR, ISBN, TITLE, PAGES, ENABLE, GENDRE;
-
+public enum OrdenEnum {
+    ASCENDENTE, DESCENDENTE;
 }
