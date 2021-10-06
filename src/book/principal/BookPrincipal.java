@@ -15,7 +15,7 @@ public class BookPrincipal {
         //otro comentario (lucho)
         
      //COMENTARIO DE PUEBA    
-     
+     //prueba de permisos desde github
         Scanner scanner = new Scanner(System.in).useDelimiter("\n");
         BookManager bookManager = BookManager.bookManagerCreate();
         
