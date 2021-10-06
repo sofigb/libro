@@ -12,6 +12,8 @@ import libro.manager.BookManager;
 public class BookPrincipal {
 
     public static void main(String[] args) throws Exception {
+        //otro comentario (lucho)
+        
         Scanner scanner = new Scanner(System.in).useDelimiter("\n");
         BookManager bookManager = BookManager.bookManagerCreate();
 
