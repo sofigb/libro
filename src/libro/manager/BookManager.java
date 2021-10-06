@@ -76,24 +76,24 @@ public class BookManager {
                 break;
             }
 
-          case GENDER: {
-                 comparator = Comparator.comparing(Book::getGender);
+            case GENDER: {
+                comparator = Comparator.comparing(Book::getGender);
                 break;
             }
 
         }
         if (orden.equals(orden.ASCENDENTE)) {
-          listBookEnable().sorted(comparator).forEach(System.out::println);
+            listBookEnable().sorted(comparator).forEach(System.out::println);
 
         } else {
-          listBookEnable().sorted(comparator.reversed()).forEach(System.out::println);
-          
+            listBookEnable().sorted(comparator.reversed()).forEach(System.out::println);
+
         }
     }
 
     public void bookMayorPages() {
         System.out.println("------------------Libro con mayor numero de páginas----------------------");
-   
+
         Optional<Book> optional = mapBook
                 .values()
                 .stream()
@@ -122,9 +122,9 @@ public class BookManager {
         }
     }
 
-     public Stream<Book> listBookEnable(){
-              
-        return(mapBook.values().stream().filter(l -> l.isEnable()));
+    public Stream<Book> listBookEnable() {
+
+        return (mapBook.values().stream().filter(l -> l.isEnable()));
     }
 
     public void enableBook(String isbn) throws Exception {
